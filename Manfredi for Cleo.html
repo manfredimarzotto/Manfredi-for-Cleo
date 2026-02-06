@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manfredi x Cleo | New Bets</title>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cleo-cocoa: #5C4033;
+            --cleo-yellow: #FFE36D;
+            --cleo-dark-bg: #0a0806;
+            --cleo-card-bg: #14110e;
+            --cleo-text-primary: #F5F1ED;
+            --cleo-text-secondary: #B8AFA6;
+            --cleo-accent: #FFE36D;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--cleo-text-primary);
+            background: var(--cleo-dark-bg);
+            background-image: radial-gradient(circle at 50% -20%, #1a1512 0%, #0a0806 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .reveal {
+            animation: fadeInUp 0.8s forwards;
+        }
+
+        /* Header */
+        .header {
+            padding: 40px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-decoration: none;
+        }
+
+        .logo-square {
+            width: 32px;
+            height: 32px;
+            background: var(--cleo-yellow);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: var(--cleo-dark-bg);
+        }
+
+        .logo-text h1 {
+            font-size: 1rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            color: var(--cleo-text-primary);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 80px 0 120px;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(255, 227, 109, 0.1);
+            border: 1px solid var(--cleo-yellow);
+            color: var(--cleo-yellow);
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h2 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            font-weight: 800;
+            line-height: 1.05;
+            margin-bottom: 32px;
+            letter-spacing: -2px;
+        }
+
+        .hero h2 span { color: #6b5d54; }
+
+        .hero-description {
+            font-size: 1.25rem;
+            color: var(--cleo-text-secondary);
+            max-width: 600px;
+            margin-bottom: 48px;
+        }
+
+        /* Grid Sections */
+        .section-title {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--cleo-yellow);
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::after {
+            content: "";
+            height: 1px;
+            flex-grow: 1;
+            background: rgba(255,255,255,0.1);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+
+        .card {
+            background: var(--cleo-card-bg);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--cleo-yellow);
+            background: rgba(255, 227, 109, 0.02);
+        }
+
+        .card h3 {
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--cleo-yellow);
+        }
+
+        .card ul {
+            list-style: none;
+        }
+
+        .card li {
+            color: var(--cleo-text-secondary);
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .card li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--cleo-yellow);
+        }
+
+        /* The "Cleo" Style Roast Box */
+        .roast-box {
+            background: #1a1410;
+            border-left: 4px solid var(--cleo-yellow);
+            padding: 40px;
+            margin: 60px 0;
+        }
+
+        .roast-box h4 {
+            color: var(--cleo-yellow);
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .roast-box p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--cleo-text-primary);
+            font-style: italic;
+        }
+
+        /* CTA */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--cleo-yellow);
+            color: var(--cleo-dark-bg);
+            padding: 18px 36px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255, 227, 109, 0.3);
+        }
+
+        footer {
+            padding: 40px;
+            text-align: center;
+            font-size: 0.8rem;
+            color: #444;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .hero { padding: 40px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <a href="#" class="logo">
+                <div class="logo-square">C</div>
+                <div class="logo-text">
+                    <h1>MANFREDI x CLEO</h1>
+                </div>
+            </a>
+            <div style="font-size: 0.8rem; font-weight: 600; color: var(--cleo-yellow);">NEW BETS BRIEF 2024</div>
+        </header>
+
+        <section class="hero reveal">
+            <span class="badge">Attention: New Bets Team</span>
+            <h2>
+                Cleo has the trust.<br>
+                <span>I have the velocity.</span>
+            </h2>
+            <p class="hero-description">
+                Building $186m ARR is the "Toast." Keeping that growth exponential requires a "Roast" of the status quo. I’m here to bridge the gap between AI experimentation and scalable revenue.
+            </p>
+            <div>
+                <a href="#vision" class="btn">View the Thesis</a>
+            </div>
+        </section>
+
+        <section id="vision" class="reveal">
+            <div class="section-title">01 / The Market Signal</div>
+            <div class="grid">
+                <div class="card">
+                    <h3>The Foundation</h3>
+                    <ul>
+                        <li>$186m ARR (Doubled YoY)</li>
+                        <li>6m+ Global Users</li>
+                        <li>Profitability Achieved (8.4% EBITDA)</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>The Gap</h3>
+                    <ul>
+                        <li>Moving from "Assistant" to "Infrastructure"</li>
+                        <li>Handling European regulatory complexity</li>
+                        <li>Capturing irregular income segments</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <div class="roast-box">
+                <h4>Cleo's Voice: The Reality Check</h4>
+                <p>"Incremental features are for banks. New Bets are for builders who want to own the next decade of personal finance."</p>
+            </div>
+        </section>
+
+        <section class="reveal">
+            <div class="section-title">02 / Execution Framework</div>
+            <div class="grid">
+                <div class="card">
+                    <h3>0-1 Momentum</h3>
+                    <p style="color: var(--cleo-text-secondary); font-size: 0.9rem;">I specialize in turning ambiguous "What ifs" into testable MVPs within 3-week cycles. No over-engineering, just user-pull validation.</p>
+                </div>
+                <div class="card">
+                    <h3>Data-Led Pivots</h3>
+                    <p style="color: var(--cleo-text-secondary); font-size: 0.9rem;">My background in M&A and AI automation means I prioritize unit economics from Day 1. If it doesn't scale, we kill it fast.</p>
+                </div>
+                <div class="card">
+                    <h3>Cross-Functional Glue</h3>
+                    <p style="color: var(--cleo-text-secondary); font-size: 0.9rem;">I sit between Product and Growth to ensure that when a "New Bet" wins, the distribution engine is already primed to scale it.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section reveal">
+            <h2 style="margin-bottom: 20px;">Ready to build the next win?</h2>
+            <p style="color: var(--cleo-text-secondary); margin-bottom: 40px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                I've prepared a deeper dive into a specific "Irregular Income" product bet. Let's discuss how I can hit the ground running.
+            </p>
+            <a href="mailto:manfredi.marzotto@gmail.com" class="btn">Schedule a 15-Min Sync</a>
+            <div style="margin-top: 40px; color: var(--cleo-yellow); font-weight: 700;">— Manfredi</div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2024 / MANFREDI / DESIGNED FOR CLEO
+    </footer>
+
+    <script>
+        // Simple scroll reveal
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('reveal');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
