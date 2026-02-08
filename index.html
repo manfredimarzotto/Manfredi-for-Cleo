@@ -57,4 +57,251 @@
         /* Header */
         .header {
             padding: 40px 0; display: flex; justify-content: space-between; align-items: center;
-            border-bottom: 1px solid rgba(255,255
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+        .logo-square {
+            width: 36px; height: 36px; background: var(--cleo-yellow); border-radius: 6px;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: 900; font-size: 1.1rem; color: var(--cleo-dark-bg);
+        }
+        .logo-text h1 { font-size: 1rem; font-weight: 800; letter-spacing: 0.5px; color: var(--cleo-text-primary); }
+        .header-badge { font-size: 0.75rem; font-weight: 700; color: var(--cleo-yellow); letter-spacing: 1px; text-transform: uppercase; }
+
+        /* Hero */
+        .hero { min-height: 85vh; display: flex; flex-direction: column; justify-content: center; }
+        .badge {
+            display: inline-block; padding: 8px 16px; background: rgba(255, 227, 109, 0.08);
+            border: 1px solid rgba(255, 227, 109, 0.3); color: var(--cleo-yellow);
+            border-radius: 24px; font-size: 0.7rem; font-weight: 700; margin-bottom: 32px;
+            text-transform: uppercase; letter-spacing: 1.5px;
+        }
+
+        .hero h2 { font-size: clamp(2.5rem, 8vw, 5rem); font-weight: 800; line-height: 1.05; margin-bottom: 40px; letter-spacing: -2.5px; }
+        .hero h2 span { color: var(--cleo-text-secondary); display: block; }
+        .hero-description { font-size: 1.25rem; color: var(--cleo-text-secondary); max-width: 700px; margin-bottom: 48px; line-height: 1.7; }
+        .bridge-line { display: block; margin-top: 24px; color: var(--cleo-text-primary); font-weight: 700; font-size: 1.15rem; }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--cleo-yellow);
+            margin-bottom: 50px; display: flex; align-items: center; gap: 16px; font-weight: 700;
+        }
+        .section-title::after { content: ""; height: 1px; flex-grow: 1; background: linear-gradient(to right, rgba(255, 227, 109, 0.3), transparent); }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; margin-bottom: 60px; }
+        .card { background: var(--cleo-card-bg); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 227, 109, 0.1); transition: var(--transition); }
+        .card:hover { border-color: rgba(255, 227, 109, 0.3); transform: translateY(-4px); }
+        .card h3 { color: var(--cleo-yellow); margin-bottom: 24px; font-size: 1.1rem; font-weight: 700; }
+        .card ul { list-style: none; color: var(--cleo-text-secondary); font-size: 0.95rem; }
+        .card ul li { margin-bottom: 14px; padding-left: 4px; line-height: 1.6; }
+
+        .big-statement {
+            font-size: clamp(1.5rem, 4vw, 2.4rem); font-weight: 700; line-height: 1.35; color: var(--cleo-text-primary);
+            margin: 80px 0; padding: 50px 40px; background: rgba(255, 227, 109, 0.05); border-left: 4px solid var(--cleo-yellow); border-radius: 8px;
+        }
+
+        .roast-box { background: rgba(92, 64, 51, 0.1); border-left: 4px solid var(--cleo-yellow); padding: 50px; margin: 80px 0; border-radius: 8px; }
+        .roast-box p { font-size: 1.6rem; font-style: italic; font-weight: 600; line-height: 1.4; }
+
+        /* Execution Flow */
+        .horizontal-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 60px; }
+        .flow-box { background: rgba(255, 255, 255, 0.02); padding: 36px; border-radius: 12px; border: 1px solid rgba(255, 227, 109, 0.1); transition: var(--transition); }
+        .flow-box:hover { border-color: var(--cleo-yellow); transform: translateY(-4px); }
+        .box-icon { font-size: 2.5rem; margin-bottom: 20px; display: block; }
+        .flow-box h3 { font-size: 1.3rem; font-weight: 800; color: var(--cleo-yellow); margin-bottom: 12px; }
+        .flow-box h4 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--cleo-text-primary); margin-bottom: 16px; }
+
+        /* Timeline */
+        .timeline-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-bottom: 60px; }
+        .timeline-box { background: rgba(255, 255, 255, 0.02); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 227, 109, 0.1); }
+        .timeline-number { font-size: 3rem; font-weight: 900; color: var(--cleo-yellow); margin-bottom: 8px; line-height: 1; }
+        .timeline-label { font-size: 0.9rem; font-weight: 700; color: var(--cleo-text-secondary); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 24px; }
+
+        /* Split Layout */
+        .split-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .split-left { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.3; color: var(--cleo-text-primary); }
+        .split-right h3 { font-size: 1.3rem; font-weight: 700; color: var(--cleo-yellow); margin-bottom: 24px; }
+        .split-right ul { list-style: none; }
+        .split-right ul li { font-size: 1.1rem; color: var(--cleo-text-secondary); margin-bottom: 16px; padding-left: 24px; position: relative; }
+        .split-right ul li:before { content: "→"; position: absolute; left: 0; color: var(--cleo-yellow); font-weight: 700; }
+
+        /* CTA */
+        .cta-section { padding: 140px 0 120px; text-align: center; }
+        .author-name { font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 700; margin-bottom: 16px; letter-spacing: -1px; }
+        .cta-buttons { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        .btn { 
+            display: inline-flex; align-items: center; justify-content: center; gap: 12px; padding: 18px 48px; 
+            font-size: 1rem; font-weight: 700; text-decoration: none; border-radius: 8px; transition: var(--transition);
+        }
+        .btn-primary { background: var(--cleo-yellow); color: var(--cleo-dark-bg); border: 2px solid var(--cleo-yellow); }
+        .btn-secondary { background: transparent; color: var(--cleo-yellow); border: 2px solid var(--cleo-yellow); }
+        .btn:hover { transform: scale(1.05); }
+
+        footer { padding: 40px; text-align: center; font-size: 0.75rem; color: var(--cleo-text-secondary); border-top: 1px solid rgba(255, 227, 109, 0.05); }
+
+        @media (max-width: 900px) {
+            .horizontal-flow, .timeline-grid, .split-layout { grid-template-columns: 1fr; gap: 32px; }
+            .hero h2 { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <header class="header">
+            <a href="#" class="logo">
+                <div class="logo-square">C</div>
+                <div class="logo-text"><h1>Manfredi × Cleo</h1></div>
+            </a>
+            <div class="header-badge">New Bets Brief</div>
+        </header>
+
+        <!-- PAGE 01 -->
+        <section class="hero reveal">
+            <span class="badge">Attention: New Bets Team</span>
+            <h2>Cleo Is Entering Its<br><span>Next Operating Phase</span></h2>
+            <div class="hero-description">
+                <p>Cleo has proven organic growth, brand awareness, and user retention. 
+                The next chapter is about sustained product innovation — and turning it into scalable revenue.</p>
+                <span class="bridge-line">That's what New Bets is built to do.</span>
+            </div>
+            <div class="page-number">1</div>
+        </section>
+
+        <!-- PAGE 02 -->
+        <section class="reveal">
+            <div class="section-title">01 / The Market Signal</div>
+            <div class="grid">
+                <div class="card">
+                    <h3>Why Cleo Wins</h3>
+                    <ul>
+                        <li>→ Trusted, category-defining fintech brand</li>
+                        <li>→ Profile of $350M+ ARR & profitability</li>
+                        <li>→ AI-native product and data advantage</li>
+                        <li>→ High trust with the young user crowd</li>
+                        <li>→ Clear PMF in core markets</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3>The Journey Ahead</h3>
+                    <ul>
+                        <li>→ US success as a launchpad for UK/Europe</li>
+                        <li>→ New Bets signals organizational maturity</li>
+                        <li>→ Adjacent products unlock new revenue streams</li>
+                        <li>→ Building for the next decade of finance</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="big-statement">
+                "New Bets exists to help Cleo evolve toward a trusted hub for personal finance by validating and scaling adjacent products."
+            </div>
+            <div class="page-number">2</div>
+        </section>
+
+        <!-- PAGE 03 -->
+        <section class="reveal">
+            <div class="roast-box">
+                <p>"Incremental features are for banks. New Bets are for builders who want to own the next decade of personal finance."</p>
+            </div>
+            <div class="page-number">3</div>
+        </section>
+
+        <!-- PAGE 04 -->
+        <section class="reveal">
+            <div class="section-title">02 / The Advantage</div>
+            <div class="horizontal-flow">
+                <div class="flow-box">
+                    <span class="box-icon">🔍</span>
+                    <h3>Pattern Recognition</h3>
+                    <h4>From Businesses to Users</h4>
+                    <p>I evaluated dozens of tech companies to spot what drives retention. I'm trained to separate signal from noise.</p>
+                </div>
+                <div class="flow-box">
+                    <span class="box-icon">⚡</span>
+                    <h3>Disciplined Testing</h3>
+                    <h4>Structured Thinking</h4>
+                    <p>Deals move fast. I scope what matters and kill bad ideas early. Focus on the one thing that proves a bet wrong.</p>
+                </div>
+                <div class="flow-box">
+                    <span class="box-icon">🚀</span>
+                    <h3>Bias Toward Shipping</h3>
+                    <h4>Execution Urgency</h4>
+                    <p>Banking has binary outcomes. I bring that urgency to product execution when trade-offs get real.</p>
+                </div>
+            </div>
+            <div class="page-number">4</div>
+        </section>
+
+        <!-- PAGE 05 -->
+        <section class="reveal">
+            <h2 style="text-align: center; margin-bottom: 60px;">90-Day Focus</h2>
+            <div class="timeline-grid">
+                <div class="timeline-box">
+                    <div class="timeline-number">30</div>
+                    <div class="timeline-label">Days</div>
+                    <p>Deep dive into core Cleo flows and identify high-potential New Bets opportunities.</p>
+                </div>
+                <div class="timeline-box">
+                    <div class="timeline-number">60</div>
+                    <div class="timeline-label">Days</div>
+                    <p>Define MVP scope and validate demand through lightweight experiments.</p>
+                </div>
+                <div class="timeline-box">
+                    <div class="timeline-number">90</div>
+                    <div class="timeline-label">Days</div>
+                    <p>Launch an MVP to a beta cohort and make a data-driven decision to scale.</p>
+                </div>
+            </div>
+            <div class="page-number">5</div>
+        </section>
+
+        <!-- PAGE 06 -->
+        <section class="reveal">
+            <div class="split-layout">
+                <div class="split-left">
+                    "New Bets isn't about launching products, it's about building systems that compound outcomes for users and revenue for Cleo."
+                </div>
+                <div class="split-right">
+                    <h3>The OS Vision:</h3>
+                    <ul>
+                        <li>Turns advice into action</li>
+                        <li>Drives growth through outcomes</li>
+                        <li>Expands into investing adjacencies</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="page-number">6</div>
+        </section>
+
+        <!-- PAGE 07 -->
+        <section class="cta-section reveal">
+            <h1 class="author-name">Manfredi Marzotto</h1>
+            <p style="color: var(--cleo-yellow); font-weight: 700; letter-spacing: 2px;">LONDON / OPERATOR</p>
+            <div class="cta-buttons">
+                <a href="mailto:manfredi.marzotto@gmail.com" class="btn btn-primary">Email Manfredi</a>
+                <a href="https://www.linkedin.com/in/manfredi-marzotto/" target="_blank" class="btn btn-secondary">LinkedIn</a>
+            </div>
+            <div class="page-number">7</div>
+        </section>
+    </div>
+
+    <footer>February 2026 / Manfredi × Cleo</footer>
+
+    <script>
+        const observerOptions = { threshold: 0.15 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
