@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Manfredi x Cleo | New Bets</title>
+    <!-- Inter Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <style>
         :root {
+            --cleo-cocoa: #5C4033;
             --cleo-yellow: #FFE36D;
             --cleo-dark-bg: #0a0806;
             --cleo-card-bg: #14110e;
             --cleo-text-primary: #F5F1ED;
             --cleo-text-secondary: #B8AFA6;
+            --cleo-accent: #FFE36D;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Basic Setup - Content Visible by Default */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
 
@@ -23,171 +26,35 @@
             line-height: 1.6;
             color: var(--cleo-text-primary);
             background: var(--cleo-dark-bg);
-            /* Subtle gradient so it's not just a flat black hole */
-            background-image: radial-gradient(circle at 50% 0%, #1a1512 0%, #0a0806 100%);
+            background-image: radial-gradient(circle at 50% -20%, #1a1512 0%, #0a0806 100%);
+            overflow-x: hidden;
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 0 30px; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
 
-        /* HEADER */
+        /* --- FIXED ANIMATION LOGIC --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: var(--transition);
+        }
+
+        .reveal.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        section { position: relative; padding: 100px 0; min-height: 60vh; }
+
+        .page-number {
+            position: absolute; bottom: 40px; right: 40px;
+            font-size: 0.85rem; font-weight: 700; color: var(--cleo-text-secondary);
+            letter-spacing: 1px; opacity: 0.4;
+        }
+
+        .page-number::before { content: "Page "; font-weight: 600; }
+
+        /* Header */
         .header {
-            padding: 40px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-        }
-
-        .logo-square {
-            width: 36px; height: 36px; background: var(--cleo-yellow); border-radius: 6px;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-weight: 900; color: #000; margin-right: 12px;
-        }
-
-        /* SECTIONS */
-        section { padding: 100px 0; min-height: 60vh; border-bottom: 1px solid rgba(255,255,255,0.03); }
-
-        .badge {
-            display: inline-block; padding: 6px 14px; border: 1px solid var(--cleo-yellow);
-            color: var(--cleo-yellow); border-radius: 20px; font-size: 0.7rem;
-            font-weight: 700; margin-bottom: 30px; text-transform: uppercase;
-        }
-
-        h2 { font-size: clamp(2.5rem, 7vw, 4.5rem); line-height: 1.1; letter-spacing: -2px; margin-bottom: 30px; }
-        h2 span { color: var(--cleo-text-secondary); display: block; }
-
-        .hero-p { font-size: 1.3rem; color: var(--cleo-text-secondary); max-width: 700px; margin-bottom: 30px; }
-        .bridge { font-weight: 800; color: var(--cleo-text-primary); }
-
-        /* GRID COMPONENTS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 50px 0; }
-        .card { background: var(--cleo-card-bg); padding: 40px; border-radius: 12px; border: 1px solid rgba(255,227,109,0.1); }
-        .card h3 { color: var(--cleo-yellow); margin-bottom: 20px; font-size: 1.1rem; text-transform: uppercase; }
-        .card ul { list-style: none; }
-        .card li { margin-bottom: 15px; padding-left: 20px; position: relative; color: var(--cleo-text-secondary); }
-        .card li::before { content: "→"; position: absolute; left: 0; color: var(--cleo-yellow); }
-
-        .big-quote {
-            font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 700; line-height: 1.3;
-            border-left: 4px solid var(--cleo-yellow); padding-left: 30px; margin: 60px 0;
-        }
-
-        .roast { background: #1a1410; padding: 50px; border-radius: 12px; margin: 40px 0; border-left: 4px solid var(--cleo-yellow); }
-        .roast p { font-size: 1.5rem; font-style: italic; font-weight: 600; }
-
-        /* 3-COLUMN FLOW */
-        .flow { display: flex; gap: 30px; margin-top: 50px; }
-        .flow-box { flex: 1; }
-        .flow-box h3 { color: var(--cleo-yellow); font-size: 1.3rem; margin-bottom: 10px; }
-
-        /* FOOTER / CTA */
-        .cta { text-align: center; padding: 120px 0; }
-        .btn { 
-            display: inline-block; background: var(--cleo-yellow); color: #000; 
-            padding: 20px 45px; border-radius: 8px; text-decoration: none; 
-            font-weight: 800; margin: 15px; transition: transform 0.2s;
-        }
-        .btn:hover { transform: scale(1.05); }
-        .btn-alt { background: transparent; color: var(--cleo-yellow); border: 2px solid var(--cleo-yellow); }
-
-        .page-num { text-align: right; font-size: 0.8rem; color: #444; font-weight: 800; margin-top: 20px; }
-
-        @media (max-width: 800px) {
-            .flow { flex-direction: column; }
-            h2 { font-size: 2.5rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="container">
-        <header class="header">
-            <div style="font-weight: 900; font-size: 1.2rem;">
-                <div class="logo-square">C</div>MANFREDI x CLEO
-            </div>
-            <div style="color: var(--cleo-yellow); font-size: 0.8rem; font-weight: 700; letter-spacing: 1px;">NEW BETS BRIEF</div>
-        </header>
-
-        <!-- PAGE 1 -->
-        <section id="p1">
-            <span class="badge">New Bets Team</span>
-            <h2>Cleo Is Entering Its<br><span>Next Operating Phase</span></h2>
-            <div class="hero-p">
-                <p>Cleo has proven organic growth, brand awareness, and user retention. The next chapter is about sustained product innovation — and turning it into scalable revenue.</p>
-                <p class="bridge">That's what New Bets is built to do.</p>
-            </div>
-            <div class="page-num">01</div>
-        </section>
-
-        <!-- PAGE 2 -->
-        <section id="p2">
-            <div class="grid">
-                <div class="card">
-                    <h3>Why Cleo Wins</h3>
-                    <ul>
-                        <li>Trusted, category-defining brand</li>
-                        <li>$350M+ ARR & Profitability</li>
-                        <li>AI-native data advantage</li>
-                        <li>High trust with young users</li>
-                    </ul>
-                </div>
-                <div class="card">
-                    <h3>The Journey Ahead</h3>
-                    <ul>
-                        <li>US success as a launchpad for UK/EU</li>
-                        <li>New Bets function maturity</li>
-                        <li>Adjacent revenue streams</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="big-quote">
-                "New Bets exists to help Cleo evolve toward a trusted hub for personal finance by validating and scaling adjacent products."
-            </div>
-            <div class="page-num">02</div>
-        </section>
-
-        <!-- PAGE 3 -->
-        <section id="p3">
-            <div class="roast">
-                <p>"Incremental features are for banks. New Bets are for builders who want to own the next decade of personal finance."</p>
-            </div>
-            <div class="page-num">03</div>
-        </section>
-
-        <!-- PAGE 4 -->
-        <section id="p4">
-            <h2 style="font-size: 2.5rem;">Why I'm Built for New Bets</h2>
-            <div class="flow">
-                <div class="flow-box">
-                    <h3>[ Pattern Recognition ]</h3>
-                    <p style="color: var(--cleo-text-secondary);">Spots what drives retention vs churn. Trained to separate signal from noise in messy data.</p>
-                </div>
-                <div class="flow-box">
-                    <h3>[ Disciplined Testing ]</h3>
-                    <p style="color: var(--cleo-text-secondary);">Deals move fast. I scope what matters and kill bad ideas early. Focus on the one thing that proves a bet wrong.</p>
-                </div>
-                <div class="flow-box">
-                    <h3>[ Bias Toward Shipping ]</h3>
-                    <p style="color: var(--cleo-text-secondary);">Banking has binary outcomes. I bring that urgency to cross-functional product execution.</p>
-                </div>
-            </div>
-            <div class="page-num">04</div>
-        </section>
-
-        <!-- PAGE 5 -->
-        <section class="cta">
-            <h2 style="font-size: 3rem; margin-bottom: 10px;">Manfredi Marzotto</h2>
-            <p style="color: var(--cleo-yellow); font-weight: 700; letter-spacing: 2px; margin-bottom: 40px;">LONDON / OPERATOR</p>
-            
-            <a href="mailto:manfredi.marzotto@gmail.com" class="btn">Email Manfredi</a>
-            <a href="https://www.linkedin.com/in/manfredi-marzotto/" target="_blank" class="btn btn-alt">LinkedIn</a>
-            <div class="page-num" style="text-align: center;">05</div>
-        </section>
-
-        <footer style="text-align: center; padding: 40px; color: #333; font-size: 0.7rem; letter-spacing: 2px;">
-            FEBRUARY 2026 / MANFREDI x CLEO
-        </footer>
-    </div>
-
-</body>
-</html>
+            padding: 40px 0; display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid rgba(255,255
